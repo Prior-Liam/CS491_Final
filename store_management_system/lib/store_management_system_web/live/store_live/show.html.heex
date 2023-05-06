@@ -13,6 +13,19 @@
   <:item title="Location"><%= @store.location %></:item>
 </.list>
 
+
+<.table
+  rows={@store.products}
+  id="products"
+  row_click={fn product -> JS.navigate(~p"/products/#{product.id}") end}
+>
+  <:col :let={product} label="Name"><%= product.name %></:col>
+  <:col :let={product} label="Vendor"><%= product.vendor %></:col>
+  <:col :let={product} label="Wholesale price"><%= product.wholesale_price %></:col>
+  <:col :let={product} label="Retail price"><%= product.retail_price %></:col>
+  <:col :let={product} label="Count"><%= product.count %></:col>
+</.table>
+
 <.back navigate={~p"/stores"}>Back to stores</.back>
 
 <.modal :if={@live_action == :edit} id="store-modal" show on_cancel={JS.patch(~p"/stores/#{@store}")}>

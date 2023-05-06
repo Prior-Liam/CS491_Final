@@ -24,7 +24,8 @@ defmodule StoreManagementSystemWeb.ProductLive.FormComponent do
         <.input field={@form[:whole_sale_price]} type="number" label="Whole sale price" />
         <.input field={@form[:retail_price]} type="number" label="Retail price" />
         <.input field={@form[:inventory_count]} type="number" label="Inventory count" />
-        <.input field={@form[:store_id]} type="select" options={Enum.map(@stores, &({&1.store_id, &1.location}))} label="Store" />
+        <.input field={@form[:store_id]} type="select" options={Enum.map(@store, &({&1.store_id, &1.location}))} label="Store" />
+        <%!-- the error is coming from the line above --%>
         <:actions>
           <.button phx-disable-with="Saving...">Save Product</.button>
         </:actions>

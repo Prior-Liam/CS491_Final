@@ -18,8 +18,7 @@ defmodule StoreManagementSystem.Sms do
 
   """
   def list_stores do
-    Repo.all(Store)
-    |> Repo.preload(:products)
+    Repo.all(Store) |> Repo.preload(:products)
   end
 
   @doc """
@@ -36,10 +35,7 @@ defmodule StoreManagementSystem.Sms do
       ** (Ecto.NoResultsError)
 
   """
-  def get_store!(id) do
-    Repo.get!(Store, id)
-    |> Repo.preload(:products)
-  end
+  def get_store!(id), do: Repo.get!(Store, id) |> Repo.preload(:products)
 
   @doc """
   Creates a store.
@@ -57,7 +53,6 @@ defmodule StoreManagementSystem.Sms do
     %Store{}
     |> Store.changeset(attrs)
     |> Repo.insert()
-    |> Repo.preload(:products)
   end
 
   @doc """
@@ -76,7 +71,6 @@ defmodule StoreManagementSystem.Sms do
     store
     |> Store.changeset(attrs)
     |> Repo.update()
-    |> Repo.preload(:products)
   end
 
   @doc """
@@ -121,7 +115,7 @@ defmodule StoreManagementSystem.Sms do
   """
   def list_products do
     Repo.all(Product)
-    |> Repo.preload(:stores)
+    |> Repo.preload(:store)
   end
 
   @doc """
@@ -138,10 +132,7 @@ defmodule StoreManagementSystem.Sms do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id) do
-    Repo.get!(Product, id)
-    |> Repo.preload(:stores)
-  end
+  def get_product!(id), do: Repo.get!(Product, id) |> Repo.preload(:store)
 
   @doc """
   Creates a product.

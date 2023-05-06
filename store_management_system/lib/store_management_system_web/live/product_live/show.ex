@@ -13,6 +13,7 @@ defmodule StoreManagementSystemWeb.ProductLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
+    #  |> assign(:stores, Sms.get_store!(id))
      |> assign(:product, Sms.get_product!(id))}
   end
 

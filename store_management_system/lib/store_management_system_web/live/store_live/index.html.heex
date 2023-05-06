@@ -14,7 +14,6 @@
 >
   <:col :let={{_id, store}} label="Store"><%= store.store_id %></:col>
   <:col :let={{_id, store}} label="Location"><%= store.location %></:col>
-
   <:action :let={{_id, store}}>
     <div class="sr-only">
       <.link navigate={~p"/stores/#{store}"}>Show</.link>
@@ -38,7 +37,6 @@
     title={@page_title}
     action={@live_action}
     store={@store}
-    products={@products}
     patch={~p"/stores"}
   />
 </.modal>

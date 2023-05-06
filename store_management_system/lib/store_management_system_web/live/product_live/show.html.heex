@@ -14,7 +14,8 @@
   <:item title="Whole sale price"><%= @product.whole_sale_price %></:item>
   <:item title="Retail price"><%= @product.retail_price %></:item>
   <:item title="Inventory count"><%= @product.inventory_count %></:item>
-  <:item title="Inventory count"><%= @product.store_id %></:item>
+  <:item title="Store"><%= @product.store_id %></:item>
+  
 </.list>
 
 <.back navigate={~p"/products"}>Back to products</.back>

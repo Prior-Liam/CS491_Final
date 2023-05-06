@@ -18,14 +18,14 @@ defmodule StoreManagementSystemWeb.ProductLive.Index do
     socket
     |> assign(:page_title, "Edit Product")
     |> assign(:product, Sms.get_product!(id))
-    |> assign(:stores, Sms.list_stores())
+    |> assign(:store, Sms.list_stores())
   end
 
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Product")
     |> assign(:product, %Product{})
-    |> assign(:stores, Sms.list_stores())
+    |> assign(:store, Sms.list_stores())
   end
 
   defp apply_action(socket, :index, _params) do
@@ -36,7 +36,7 @@ defmodule StoreManagementSystemWeb.ProductLive.Index do
 
   @impl true
   def handle_info({StoreManagementSystemWeb.ProductLive.FormComponent, {:saved, product}}, socket) do
-    {:noreply, stream_insert(socket, :products, product)}
+    {:noreply, stream_insert(socket, :products, product)}#|> Repo.preload(:store, force: true))
   end
 
   @impl true
