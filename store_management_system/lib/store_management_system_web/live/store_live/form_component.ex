@@ -21,6 +21,7 @@ defmodule StoreManagementSystemWeb.StoreLive.FormComponent do
       >
         <.input field={@form[:store_id]} type="text" label="Store" />
         <.input field={@form[:location]} type="text" label="Location" />
+        <%!-- <.input field={@form[:products]} type="text" label="Products" options={Enum.map(@products, &({&1.name, &1.vendor_name}))}/> --%>
         <:actions>
           <.button phx-disable-with="Saving...">Save Store</.button>
         </:actions>

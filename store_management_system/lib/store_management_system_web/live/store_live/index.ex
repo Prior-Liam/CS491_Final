@@ -18,12 +18,14 @@ defmodule StoreManagementSystemWeb.StoreLive.Index do
     socket
     |> assign(:page_title, "Edit Store")
     |> assign(:store, Sms.get_store!(id))
+    |> assign(:products, Sms.list_products())
   end
 
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Store")
     |> assign(:store, %Store{})
+    |> assign(:products, Sms.list_products())
   end
 
   defp apply_action(socket, :index, _params) do

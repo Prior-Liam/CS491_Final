@@ -18,4 +18,22 @@ defmodule StoreManagementSystem.SmsFixtures do
 
     store
   end
+
+  @doc """
+  Generate a product.
+  """
+  def product_fixture(attrs \\ %{}) do
+    {:ok, product} =
+      attrs
+      |> Enum.into(%{
+        inventory_count: 42,
+        name: "some name",
+        retail_price: 42,
+        vendor_name: "some vendor_name",
+        whole_sale_price: 42
+      })
+      |> StoreManagementSystem.Sms.create_product()
+
+    product
+  end
 end
